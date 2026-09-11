@@ -1,6 +1,6 @@
 
 from __future__ import annotations
-import os
+import os, json
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -31,3 +31,9 @@ GROQ_MODEL = os.getenv(
     "GROQ_MODEL"
 ).strip()
 
+
+ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.getenv("ALLOWED_ORIGINS", "").split(",")
+    if origin.strip()
+]

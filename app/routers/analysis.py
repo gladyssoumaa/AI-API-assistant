@@ -10,7 +10,7 @@ from app.models.analysis import APIAnalysis
 from app.models.endpoints import APIEndpoint
 from app.models.projects import Project
 from app.models.user import User
-from app.schemas import AnalysisResponse, ProjectAnalysisResponse,  TestGenerationResponse
+from app.schemas.analysis import AnalysisResponse, ProjectAnalysisResponse,  TestGenerationResponse
 from app.security import get_current_user
 from app.services.ai import analyze_project,  analyze_endpoint, generate_tests
 from app.schemas import TestExecutionResponse
@@ -153,7 +153,7 @@ def analyze_entire_project(
     return result
 
 @router.post(
-    "/endpoints/{endpoint_id}/generate-tests",
+    "/{endpoint_id}/generate-tests",
     response_model=TestGenerationResponse,
 )
 
@@ -215,7 +215,7 @@ def generate_endpoint_tests(
     }
 
 @router.post(
-    "/endpoints/{endpoint_id}/run-tests",
+    "/{endpoint_id}/run-tests",
     response_model=TestExecutionResponse,
 )
 def run_endpoint_tests(
